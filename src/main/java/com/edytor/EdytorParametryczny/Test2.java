@@ -46,7 +46,7 @@ public class Test2 {
         cells[2] = edge;
 
         // Create Edge
-        DefaultEdge edge1 = new DefaultEdge();
+        //DefaultEdge edge1 = new DefaultEdge();
         // Fetch the ports from the new vertices, and connect them with the edge
 //        cells[0].addPort();
 //        cells[1].addPort();
@@ -64,7 +64,8 @@ public class Test2 {
 
         // Show in Frame
         JFrame frame = new JFrame();
-        frame.getContentPane().add(new JScrollPane(graph));
+       // frame.getContentPane().add(new JScrollPane(graph));
+        frame.add(new JScrollPane(graph));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
