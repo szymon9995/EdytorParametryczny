@@ -20,8 +20,21 @@ import javax.swing.JTextField;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
+import com.edytor.EdytorParametryczny.IFparameters.IFAndGate;
+import com.edytor.EdytorParametryczny.IFparameters.IFDiamond;
+import com.edytor.EdytorParametryczny.IFparameters.IFElipse;
+import com.edytor.EdytorParametryczny.IFparameters.IFPolygon;
+import com.edytor.EdytorParametryczny.IFparameters.IFRoundRect;
+import com.edytor.EdytorParametryczny.IFparameters.IFSquare;
+import com.edytor.EdytorParametryczny.IFparameters.IFTriangle;
+import com.edytor.EdytorParametryczny.components.DrawAndGate;
 import com.edytor.EdytorParametryczny.components.DrawComponent;
+import com.edytor.EdytorParametryczny.components.DrawDiamond;
+import com.edytor.EdytorParametryczny.components.DrawElipse;
+import com.edytor.EdytorParametryczny.components.DrawPolygon;
+import com.edytor.EdytorParametryczny.components.DrawRoundRect;
 import com.edytor.EdytorParametryczny.components.DrawSquare;
+import com.edytor.EdytorParametryczny.components.DrawTriangle;
 import com.edytor.EdytorParametryczny.data.EdytorData;
 
 public class PanelParametry extends JPanel{
@@ -72,10 +85,44 @@ public class PanelParametry extends JPanel{
 				if(com.GetCell() == e.getCell())
 				{
 					curSelected = com;
-					IFSquare s = new IFSquare();
-					s.UpdateData();
+					if(curSelected instanceof DrawSquare)
+					{
+						IFSquare s = new IFSquare(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawElipse)
+					{
+						IFElipse s = new IFElipse(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawDiamond)
+					{
+						IFDiamond s = new IFDiamond(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawRoundRect)
+					{
+						IFRoundRect s = new IFRoundRect(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawTriangle)
+					{
+						IFTriangle s = new IFTriangle(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawPolygon)
+					{
+						IFPolygon s = new IFPolygon(curSelected,objectEditor);
+						s.UpdateData();
+					}
+					else if(curSelected instanceof DrawAndGate)
+					{
+						IFAndGate s = new IFAndGate(curSelected,objectEditor);
+						s.UpdateData();
+					}
 					break;
 				}
+				
 			}
 			
 		}
@@ -83,179 +130,6 @@ public class PanelParametry extends JPanel{
 		
 	}
 	
-	class IFSquare
-	{
-		JTextField posX;
-		JTextField posY;
-		JTextField posW;
-		JTextField posH;
-		JButton colorButton;
-		JTextField textField;
-		
-		DrawSquare tmp;
-		
-		public void UpdateData()
-		{
-				tmp = (DrawSquare)curSelected;
-				objectEditor.removeAll();
-				
-				
-				String x = ""+tmp.GetX();
-				posX = new JTextField(x,10);
-				String y = ""+tmp.GetY();
-				posY = new JTextField(y,10);
-				String w = ""+tmp.GetWidth();
-				posW = new JTextField(w,10);
-				String h = ""+tmp.GetHeight();
-				posH = new JTextField(h,10);
-				colorButton = new JButton("Color");
-				textField = new JTextField(tmp.GetText(),10);
-				
-				
-				objectEditor.add(posX);
-				objectEditor.add(posY);
-				objectEditor.add(posW);
-				objectEditor.add(posH);
-				objectEditor.add(colorButton);
-				objectEditor.add(textField);
-				
-				objectEditor.revalidate();
-				objectEditor.repaint();
-				
-				
-				posX.addActionListener(new ActionListener()
-						{
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								
-								if(posX.getText()!=null)
-								{
-									int xPos =Integer.parseInt(posX.getText());
-									if(xPos>-1)
-									{
-										tmp.SetX(xPos);
-										EdytorData.Repaint();
-									}
-								}
-								
-							}
-					
-						}
-						);
-				
-				posY.addActionListener(new ActionListener()
-				{
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						if(posY.getText()!=null)
-						{
-							int yPos =Integer.parseInt(posY.getText());
-							if(yPos>-1)
-							{
-								tmp.SetY(yPos);
-								EdytorData.Repaint();
-							}
-						}
-						
-					}
-			
-				}
-				);
-				
-				posW.addActionListener(new ActionListener()
-				{
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						if(posW.getText()!=null)
-						{
-							int wPos =Integer.parseInt(posW.getText());
-							if(wPos>-1)
-							{
-								tmp.SetWidth(wPos);
-								EdytorData.Repaint();
-							}
-						}
-						
-					}
-			
-				}
-				);
-				
-				posH.addActionListener(new ActionListener()
-				{
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						if(posH.getText()!=null)
-						{
-							int hPos =Integer.parseInt(posH.getText());
-							if(hPos>-1)
-							{
-								tmp.SetHeight(hPos);
-								EdytorData.Repaint();
-							}
-						}
-						
-					}
-			
-				}
-				);
-				
-				colorButton.addActionListener(new ActionListener()
-						{
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								JPanel panel = new JPanel();
-								
-								JColorChooser fieldCol = new JColorChooser();
-								panel.add(fieldCol);
-								
-								int option = JOptionPane.showConfirmDialog(null, panel, "Color", JOptionPane.CANCEL_OPTION);
-								if(option == JOptionPane.OK_OPTION)
-								{
-									Color color = fieldCol.getColor();
-									if(color !=null)
-									{
-										tmp.SetBackgroundColor(color);
-										EdytorData.Repaint();
-									}
-								}
-								
-							}
-					
-						}
-						
-						);
-				
-				textField.addActionListener(new ActionListener()
-						{
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								String text = textField.getText();
-								if(text == null)
-								{
-									text = "";
-								}
-								
-								tmp.SetText(text);
-								EdytorData.Repaint();
-								
-							}
-					
-						}
-						
-						);
-				
-			
-		}
-		
-	}
+	
+	
 }

@@ -18,10 +18,18 @@ public abstract class DrawComponent {
 	protected String text;
 	
 	
-	public abstract String GetName();
+	public String GetName()
+	{
+		return "default";
+	}
 	protected abstract void Update();
 	
 	
+	@SuppressWarnings("unchecked")
+	protected void SetCellShapeAtribute()
+	{
+		cell.getAttributes().put("cellShape", GetName());
+	}
 	
 	public DefaultGraphCell GetCell()
 	{
@@ -40,6 +48,8 @@ public abstract class DrawComponent {
 		text = null;
 		
 		cell.addPort();
+		
+		SetCellShapeAtribute();
 	}
 	
 	public void SetCords(int x,int y)

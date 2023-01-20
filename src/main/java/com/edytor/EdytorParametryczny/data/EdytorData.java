@@ -11,6 +11,7 @@ import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
+import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 
 import com.edytor.EdytorParametryczny.components.DrawComponent;
@@ -18,7 +19,9 @@ import com.edytor.EdytorParametryczny.components.DrawComponent;
 public class EdytorData {
 	private static List<DrawComponent> cells;
 	private static GraphModel model;
+	private static GraphLayoutCache view;
 	private static JGraph graph;
+	
 	
 	private static JScrollPane rysownik;
 	
@@ -26,7 +29,8 @@ public class EdytorData {
 	{
 		cells = new ArrayList<DrawComponent>();
 		model = new DefaultGraphModel();
-		graph = new JGraph(model);
+		view = new GraphLayoutCache(model,new OurCellViewFactory());
+		graph = new JGraph(model,view);
 		graph.setCloneable(true);
         graph.setInvokesStopCellEditing(true);
         graph.setJumpToDefaultPort(true);
@@ -70,7 +74,6 @@ public class EdytorData {
 	{
 		if(rysownik!=null)
 		{
-			
 			graph.getGraphLayoutCache().reload();
 			graph.repaint();
 			graph.refresh();
