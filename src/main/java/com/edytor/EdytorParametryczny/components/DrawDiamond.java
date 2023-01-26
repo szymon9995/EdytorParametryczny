@@ -14,8 +14,6 @@ public class DrawDiamond extends DrawComponent{
 	public String GetName() {
 		return "Diamond";
 	}
-
-private Dimension size;
 	
 	public DrawDiamond(int width,int height)
 	{

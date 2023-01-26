@@ -21,10 +21,8 @@ public class PanelPrzybiornik extends JPanel{
 	public PanelPrzybiornik()
 	{
 		super();
-		this.setBackground(Color.yellow);
+		this.setBackground(new Color(253, 203, 110));
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		this.setAlignmentX(Component.CENTER_ALIGNMENT);
-		this.setAlignmentY(Component.CENTER_ALIGNMENT);
 		elements = new ArrayList<ElementPodstawa>();
 		
 		elements.add(new ElementSquare());
@@ -34,10 +32,12 @@ public class PanelPrzybiornik extends JPanel{
 		elements.add(new ElementTriangle());
 		elements.add(new ElementPolygon());
 		elements.add(new ElementAndGate());
+		elements.add(new ElementEdge());
 		
 		for(ElementPodstawa el : elements)
 		{
 			this.add(el.GetButton());
+			el.GetButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
 	}
 	

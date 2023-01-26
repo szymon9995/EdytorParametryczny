@@ -1,9 +1,11 @@
 package com.edytor.EdytorParametryczny.przybiornikElement;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,6 +19,7 @@ public class ElementSquare extends ElementPodstawa{
 	protected void OnButtonPress() {
 		
 		JPanel panel = new JPanel();
+
 		
 		JTextField fieldX = new JTextField("0",6);
 		JTextField fieldY = new JTextField("0",6);
@@ -24,10 +27,15 @@ public class ElementSquare extends ElementPodstawa{
 		JTextField fieldH = new JTextField("10",6);
 		JColorChooser fieldCol = new JColorChooser();
 		
+		panel.add(new JLabel("X:"));
 		panel.add(fieldX);
+		panel.add(new JLabel("Y:"));
 		panel.add(fieldY);
+		panel.add(new JLabel("Width:"));
 		panel.add(fieldW);
+		panel.add(new JLabel("Height:"));
 		panel.add(fieldH);
+		panel.add(new JLabel("Color:"));
 		panel.add(fieldCol);
 		
 		int option = JOptionPane.showConfirmDialog(null, panel, "Square", JOptionPane.CANCEL_OPTION);

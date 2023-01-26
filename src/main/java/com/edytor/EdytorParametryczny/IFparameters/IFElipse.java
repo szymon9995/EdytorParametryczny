@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -31,7 +32,12 @@ public class IFElipse extends IFShape
 	
 	DrawElipse tmp;
 	
-	
+	JLabel XLabel;
+	JLabel YLabel;
+	JLabel WLabel;
+	JLabel HLabel;
+	JLabel CLabel;
+	JLabel TLabel;
 	
 	public void UpdateData()
 	{
@@ -51,11 +57,24 @@ public class IFElipse extends IFShape
 			textField = new JTextField(tmp.GetText(),10);
 			
 			
+			XLabel = new JLabel("X:");
+			YLabel = new JLabel("Y:");
+			WLabel = new JLabel("Width:");
+			HLabel = new JLabel("Height:");
+			CLabel = new JLabel("");
+			TLabel = new JLabel("Text:");
+			
+			objectEditor.add(XLabel);
 			objectEditor.add(posX);
+			objectEditor.add(YLabel);
 			objectEditor.add(posY);
+			objectEditor.add(WLabel);
 			objectEditor.add(posW);
+			objectEditor.add(HLabel);
 			objectEditor.add(posH);
+			objectEditor.add(CLabel);
 			objectEditor.add(colorButton);
+			objectEditor.add(TLabel);
 			objectEditor.add(textField);
 			
 			objectEditor.revalidate();

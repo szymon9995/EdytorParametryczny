@@ -45,7 +45,7 @@ public class PanelRysownik extends JPanel{
         
         EdytorData.SetRysownik(pane);
         
-        Test();
+        //Test();
         
 	}
 	

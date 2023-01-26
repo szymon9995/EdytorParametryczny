@@ -1,6 +1,7 @@
 package com.edytor.EdytorParametryczny.przybiornikElement;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,7 @@ public abstract class ElementPodstawa {
 	public ElementPodstawa()
 	{
 		button = new JButton(GetName());
+		button.setFont(new Font("Courier",Font.PLAIN,11));
 		button.addActionListener(new ActionListener()
 				{
 

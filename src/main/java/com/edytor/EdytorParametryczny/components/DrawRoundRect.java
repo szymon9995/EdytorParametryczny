@@ -9,8 +9,6 @@ import javax.swing.BorderFactory;
 import org.jgraph.graph.GraphConstants;
 
 public class DrawRoundRect extends DrawComponent{
-
-	private Dimension size;
 	
 	@Override
 	public String GetName() {

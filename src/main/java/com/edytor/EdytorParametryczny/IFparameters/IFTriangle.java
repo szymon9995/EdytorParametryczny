@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -36,7 +38,13 @@ public class IFTriangle extends IFShape
 	
 	DrawTriangle tmp;
 	
-	
+	JLabel XLabel;
+	JLabel YLabel;
+	JLabel WLabel;
+	JLabel HLabel;
+	JLabel CLabel;
+	JLabel TLabel;
+	JLabel FLabel;
 	
 	public void UpdateData()
 	{
@@ -62,14 +70,30 @@ public class IFTriangle extends IFShape
 			colorButton = new JButton("Color");
 			textField = new JTextField(tmp.GetText(),10);
 			
+			XLabel = new JLabel("X:");
+			YLabel = new JLabel("Y:");
+			WLabel = new JLabel("Width:");
+			HLabel = new JLabel("Height:");
+			CLabel = new JLabel("");
+			TLabel = new JLabel("Text:");
+			FLabel = new JLabel("Angle:");
 			
+			objectEditor.add(XLabel);
 			objectEditor.add(posX);
+			objectEditor.add(YLabel);
 			objectEditor.add(posY);
+			objectEditor.add(WLabel);
 			objectEditor.add(posW);
+			objectEditor.add(HLabel);
 			objectEditor.add(posH);
+			objectEditor.add(FLabel);
 			objectEditor.add(posTriFloat);
+			objectEditor.add(CLabel);
 			objectEditor.add(colorButton);
+			objectEditor.add(TLabel);
 			objectEditor.add(textField);
+			
+			objectEditor.setLayout(new BoxLayout(objectEditor, BoxLayout.PAGE_AXIS));
 			
 			objectEditor.revalidate();
 			objectEditor.repaint();

@@ -11,8 +11,6 @@ import org.jgraph.graph.GraphConstants;
 
 public class DrawSquare extends DrawComponent{
 	
-	private Dimension size;
-	
 	public DrawSquare(int width,int height)
 	{
 		super();

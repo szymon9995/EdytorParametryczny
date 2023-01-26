@@ -9,8 +9,6 @@ import javax.swing.BorderFactory;
 import org.jgraph.graph.GraphConstants;
 
 public class DrawTriangle extends DrawComponent{
-
-	private Dimension size;
 	private float triangle_float;
 	
 	@Override

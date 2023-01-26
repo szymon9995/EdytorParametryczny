@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -44,6 +45,8 @@ public class PanelParametry extends JPanel{
 	JPanel objectsList;
 	JPanel objectEditor;
 	
+	JLabel objectName;
+	
 	DrawComponent curSelected;
 	
 	public PanelParametry()
@@ -56,10 +59,12 @@ public class PanelParametry extends JPanel{
 		objectsList = new JPanel();
 		objectEditor = new JPanel();
 		
-		objectsList.setBackground(Color.cyan);
-		objectEditor.setBackground(Color.white );
+		objectsList.setBackground(new Color(116, 185, 255));
+		objectEditor.setBackground(new Color(178, 190, 195) );
 		objectsList.setBorder(BorderFactory.createLineBorder(Color.black));
 		objectEditor.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		objectName = new JLabel("");
 		
 		curSelected = null;
 		
@@ -68,6 +73,9 @@ public class PanelParametry extends JPanel{
 		EdytorData.GetGraph().addGraphSelectionListener(new ParListener());
 		this.add(objectsList);
 		this.add(objectEditor);
+		
+		
+		objectsList.add(objectName);
 		
 	}
 
@@ -80,10 +88,13 @@ public class PanelParametry extends JPanel{
 			
 			List<DrawComponent> tmp = EdytorData.GetCells();
 			
+			int i=0;
 			for(DrawComponent com : tmp)
 			{
 				if(com.GetCell() == e.getCell())
 				{
+					objectName.setText(com.GetName()+i);
+					
 					curSelected = com;
 					if(curSelected instanceof DrawSquare)
 					{
@@ -122,7 +133,7 @@ public class PanelParametry extends JPanel{
 					}
 					break;
 				}
-				
+				i++;
 			}
 			
 		}

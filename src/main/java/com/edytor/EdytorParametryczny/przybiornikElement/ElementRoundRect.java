@@ -3,6 +3,7 @@ package com.edytor.EdytorParametryczny.przybiornikElement;
 import java.awt.Color;
 
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -24,10 +25,15 @@ public class ElementRoundRect extends ElementPodstawa{
 		JTextField fieldH = new JTextField("10",6);
 		JColorChooser fieldCol = new JColorChooser();
 		
+		panel.add(new JLabel("X:"));
 		panel.add(fieldX);
+		panel.add(new JLabel("Y:"));
 		panel.add(fieldY);
+		panel.add(new JLabel("Width:"));
 		panel.add(fieldW);
+		panel.add(new JLabel("Height:"));
 		panel.add(fieldH);
+		panel.add(new JLabel("Color:"));
 		panel.add(fieldCol);
 		
 		int option = JOptionPane.showConfirmDialog(null, panel, "Elipse", JOptionPane.CANCEL_OPTION);

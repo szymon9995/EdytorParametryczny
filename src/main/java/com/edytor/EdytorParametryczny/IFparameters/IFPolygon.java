@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -31,6 +32,14 @@ public class IFPolygon extends IFShape
 	JButton colorButton;
 	JTextField textField;
 	
+	JLabel XLabel;
+	JLabel YLabel;
+	JLabel WLabel;
+	JLabel HLabel;
+	JLabel CLabel;
+	JLabel TLabel;
+	JLabel NLabel;
+	
 	DrawPolygon tmp;
 	
 	
@@ -54,12 +63,27 @@ public class IFPolygon extends IFShape
 			String n = ""+tmp.getNSize();
 			posN = new JTextField(n,10);
 			
+			XLabel = new JLabel("X:");
+			YLabel = new JLabel("Y:");
+			WLabel = new JLabel("Width:");
+			HLabel = new JLabel("Height:");
+			CLabel = new JLabel("");
+			TLabel = new JLabel("Text:");
+			NLabel = new JLabel("Edges:");
+			
+			objectEditor.add(XLabel);
 			objectEditor.add(posX);
+			objectEditor.add(YLabel);
 			objectEditor.add(posY);
+			objectEditor.add(WLabel);
 			objectEditor.add(posW);
+			objectEditor.add(HLabel);
 			objectEditor.add(posH);
+			objectEditor.add(NLabel);
 			objectEditor.add(posN);
+			objectEditor.add(CLabel);
 			objectEditor.add(colorButton);
+			objectEditor.add(TLabel);
 			objectEditor.add(textField);
 			
 			objectEditor.revalidate();

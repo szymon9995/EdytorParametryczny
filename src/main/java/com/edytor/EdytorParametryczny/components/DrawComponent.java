@@ -1,6 +1,7 @@
 package com.edytor.EdytorParametryczny.components;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import org.jgraph.graph.DefaultGraphCell;
 
@@ -16,6 +17,7 @@ public abstract class DrawComponent {
 	protected boolean isOpaque;
 	protected boolean raised;
 	protected String text;
+	protected Dimension size;
 	
 	
 	public String GetName()
@@ -72,6 +74,21 @@ public abstract class DrawComponent {
 		fg = color;
 		
 		Update();
+	}
+	
+	public Color getBackroundColor()
+	{
+		return bg;
+	}
+	
+	public Color getForegroundColor()
+	{
+		return fg;
+	}
+	
+	public Dimension getSize()
+	{
+		return size;
 	}
 	
 	public void SetOpaque(boolean opaque)
