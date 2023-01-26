@@ -32,52 +32,6 @@ public class DiamondVertexView extends VertexView{
 	public DiamondVertexView(Object cell) {
 		super(cell);
 	}
-	public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p) {
-		Point2D center = AbstractCellView.getCenterPoint(this);
-		double halfwidth = getBounds().getWidth() / 2;
-		double halfheight = getBounds().getHeight() / 2;
-		Point2D top = new Point2D.Double(center.getX(), center.getY() - halfheight);
-		Point2D bottom = new Point2D.Double(center.getX(), center.getY() + halfheight);
-		Point2D left = new Point2D.Double(center.getX() - halfwidth, center.getY());
- 		Point2D right = new Point2D.Double(center.getX() + halfwidth, center.getY());
-		if (center.getX() == p.getX()) {
-			if (center.getY() > p.getY())
-				return (top);
-			return bottom;
-		}
-		if (center.getY() == p.getY()) {
-			if (center.getX() > p.getX())
-				return (left);
-			return right;
-		}
-
-		Point2D i;
-		if (p.getX() < center.getX())
-			if (p.getY() < center.getY())
-				i = intersection(p, center, top, left);
-			else
-				i = intersection(p, center, bottom, left);
-		else if (p.getY() < center.getY())
-			i = intersection(p, center, top, right);
-		else
-			i = intersection(p, center, bottom, right);
-		return i;
-	}
-
-	private Point2D intersection(Point2D lineOneStart, Point2D lineOneEnd,
-									Point2D lineTwoStart, Point2D lineTwoEnd) {
-		double m1 = (lineOneEnd.getY() - lineOneStart.getY())
-					/ (lineOneEnd.getX() - lineOneStart.getX());
-		double b1 = lineOneStart.getY() - m1 * lineOneStart.getX();
-		double m2 = (lineTwoEnd.getY() - lineTwoStart.getY())
-					/ (lineTwoEnd.getX() - lineTwoStart.getX());
-		double b2 = lineTwoStart.getY() - m2 * lineTwoStart.getX();
-		double xinter = (b1 - b2) / (m2 - m1);
-		double yinter = m1 * xinter + b1;
-		Point2D intersection = getAttributes().createPoint(xinter, yinter);
-		return intersection;
-	}
-
 	public CellViewRenderer getRenderer() {
 		return renderer;
 	}

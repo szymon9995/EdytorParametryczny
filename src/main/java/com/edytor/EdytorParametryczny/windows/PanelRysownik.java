@@ -21,7 +21,6 @@ import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.DefaultEdge;
 
-import com.edytor.EdytorParametryczny.Test3;
 import com.edytor.EdytorParametryczny.components.DrawElipse;
 import com.edytor.EdytorParametryczny.components.DrawSquare;
 import com.edytor.EdytorParametryczny.data.EdytorData;
@@ -77,24 +76,7 @@ public class PanelRysownik extends JPanel{
         GraphConstants.setEndFill(edge.getAttributes(), true);
         
         EdytorData.GetGraph().getGraphLayoutCache().insert(edge);
-        
-        DrawSquare square3 = new DrawSquare(30,30);
-   
-        Test3 t3 = new Test3(square3.GetCell());
-        String msg = (String)square3.GetCell().getAttributes().get("Rectangle2D");
-        Map m = square3.GetCell().getAttributes();
-        
-        square3.GetCell().getAttributes().put("cellShape", "default");
-        
-        System.out.println(square3.GetCell().getAttributes().keySet().toString());
-        System.out.println(square3.GetCell().getAttributes().values().toString());
-        System.out.println(msg);
-        System.out.println(m.size());
-        square3.SetCords(100, 100);
-        square3.SetBackgroundColor(Color.GREEN);
-        square3.SetOpaque(true);
-        square3.SetText("Test1");
-        EdytorData.AddCell(square3);
+  
         
         
         DrawElipse elipse = new DrawElipse(100,100);

@@ -4,7 +4,6 @@ import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.VertexView;
 
-import com.edytor.EdytorParametryczny.Test3;
 import com.edytor.EdytorParametryczny.components.views.AndGateVertexView;
 import com.edytor.EdytorParametryczny.components.views.DiamondVertexView;
 import com.edytor.EdytorParametryczny.components.views.ElipseVertexView;
